@@ -8,10 +8,10 @@ using namespace std;
 class Lexer {
 
 private:
-    istream* stream;
+    istream *stream;
 
 public:
-    Lexer(istream stream);
+    Lexer(istream *stream);
     int nextToken(void);
 };
 
