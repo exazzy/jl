@@ -8,12 +8,17 @@ int main(int argc, char **argv) {
     ifstream *file = new ifstream(filename);
     Lexer *lexer = new Lexer(file);
 
-    lexer->nextToken();
+    Token token;
+    do {
+        token = lexer->nextToken();
+        cout << &token << endl;
+    } while (token.getType() != END);
+    cout << endl;
 
     file->close();
     delete file;
 
     delete lexer;
 
-    return 1;
+    return 0;
 }
