@@ -10,9 +10,11 @@ int main(int argc, char **argv) {
 
     Token token;
     do {
+//    for (int i = 0; i < 5; i++) {
 	token = lexer->nextToken();
 	cout << token.toString() << endl;
     } while (token.getType() != END);
+//    }
     cout << endl;
 
     file->close();

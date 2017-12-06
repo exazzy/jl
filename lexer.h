@@ -10,10 +10,13 @@ class Lexer {
 
 private:
     istream *stream;
-    char lookAhead;
+    char lookAheadCh;
 
     bool isWhiteSpace(char ch);
     bool isDigit(char ch);
+    
+    char nextChar(void);
+    char lookAhead(void);
 
 public:
     Lexer(istream *stream);

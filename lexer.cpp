@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "lexer.h"
 
@@ -11,18 +12,27 @@ Lexer::Lexer(istream* stream) {
 Token Lexer::nextToken() {
     char ch;
 
-    do {
-    } while (isWhiteSpace(ch = stream->get()));
+    while (isWhiteSpace(ch = lookAhead())) {
+	nextChar();
+    }
 
     if (isDigit(ch)) {
-	return Token((int)(ch - '0'));
+	string value;
+//        bool 
+	while (isDigit(lookAhead())) {
+	    ch = nextChar();
+	    value += ch;
+	}
+	return Token(stod(value.c_str()));
     }
 
     if (ch == '+') {
+	nextChar();
 	return Token(PLUS);
     }
 
     if (ch == '*') {
+	nextChar();
 	return Token(MULT);
     }
 
@@ -33,8 +43,14 @@ Token Lexer::nextToken() {
     return Token(INVALID);
 }
 
-char lookAhead() {
-    return 0;
+char Lexer::nextChar(void) {
+    char ch = lookAheadCh;
+    lookAheadCh = 0;
+    return ch ?: stream->get();
+}
+
+char Lexer::lookAhead(void) {
+    return lookAheadCh ?: lookAheadCh = stream->get();
 }
 
 bool Lexer::isWhiteSpace(char ch) {

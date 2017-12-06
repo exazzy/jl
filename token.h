@@ -12,6 +12,8 @@ class Token {
 private:
     TokenType type;
     double value;
+    
+    char lookAheadCh;
 
 public:
     Token();
