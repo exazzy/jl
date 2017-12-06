@@ -15,19 +15,19 @@ Token Lexer::nextToken() {
     } while (isWhiteSpace(ch = stream->get()));
 
     if (isDigit(ch)) {
-        return Token((int)(ch - '0'));
+	return Token((int)(ch - '0'));
     }
 
     if (ch == '+') {
-        return Token(PLUS);
+	return Token(PLUS);
     }
 
     if (ch == '*') {
-        return Token(MULT);
+	return Token(MULT);
     }
 
     if (ch == EOF) {
-        return Token(END);
+	return Token(END);
     }
 
     return Token(INVALID);

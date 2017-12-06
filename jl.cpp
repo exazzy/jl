@@ -10,8 +10,8 @@ int main(int argc, char **argv) {
 
     Token token;
     do {
-        token = lexer->nextToken();
-        cout << &token << endl;
+	token = lexer->nextToken();
+	cout << token.toString() << endl;
     } while (token.getType() != END);
     cout << endl;
 

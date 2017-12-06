@@ -11,17 +11,17 @@ class Token {
 
 private:
     TokenType type;
-    void *value;
+    double value;
 
 public:
     Token();
     Token(TokenType type);
-    Token(int value);
+    Token(double value);
 
     ~Token();
 
     TokenType getType(void);
-    int getIntValue(void);
+    double getValue(void);
     string toString(void);
 
 };
