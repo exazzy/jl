@@ -1,17 +1,17 @@
 CC=g++
 CFLAGS=-c -Wall -std=c++11
-LDFLAGS=
-SOURCES=jl.cpp lexer.cpp token.cpp
-OBJECTS=$(SOURCES:.cpp=.o)
+#LDFLAGS=
+SRC=$(wildcard *.cpp)
+OBJS=$(SRC:.cpp=.o)
 EXECUTABLE=jl
 
 all: $(EXECUTABLE)
 
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+$(EXECUTABLE): $(OBJS)
+	$(CC) $(LDFLAGS) -o $@ $^
 
-.cpp.o:
-	$(CC) $(CFLAGS) $< -o $@
+%.o: %.cpp
+	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
-	rm -rf $(OBJECTS) $(EXECUTABLE)
+	rm -f $(OBJS) $(EXECUTABLE)

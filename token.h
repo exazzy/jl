@@ -1,11 +1,11 @@
-#ifndef _LEXEME_H_
-#define _LEXEME_H_
+#ifndef _TOKEN_H_
+#define _TOKEN_H_
 
 #include <string>
 
 using namespace std;
 
-enum TokenType {NUMBER, PLUS, MULT, END, UNDEFINED, INVALID};
+enum TokenType { NUMBER, PLUS, MULT, END, UNDEFINED, INVALID };
 
 class Token {
 
@@ -28,4 +28,4 @@ public:
 
 };
 
-#endif // _LEXEME_H_
+#endif // _TOKEN_H_

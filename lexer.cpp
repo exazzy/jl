@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Lexer::Lexer(istream* stream) {
+Lexer::Lexer(istream *stream) {
     this->stream = stream;
 }
 
@@ -13,27 +13,27 @@ Token Lexer::nextToken() {
     char ch;
 
     while (isWhiteSpace(ch = lookAhead())) {
-	nextChar();
+        nextChar();
     }
 
     if (isDigit(ch)) {
-	string value;
-//        bool 
-	while (isDigit(lookAhead())) {
-	    ch = nextChar();
-	    value += ch;
-	}
-	return Token(stod(value.c_str()));
+        string value;
+    //        bool
+        while (isDigit(lookAhead())) {
+            ch = nextChar();
+            value += ch;
+        }
+        return Token(stod(value.c_str()));
     }
 
     if (ch == '+') {
-	nextChar();
-	return Token(PLUS);
+        nextChar();
+        return Token(PLUS);
     }
 
     if (ch == '*') {
-	nextChar();
-	return Token(MULT);
+        nextChar();
+        return Token(MULT);
     }
 
     if (ch == EOF) {
